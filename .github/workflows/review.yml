@@ -1,0 +1,16 @@
+name: Review
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+  workflow_dispatch:
+
+jobs:
+  review:
+    uses: Perform-Partners/github-workflows/.github/workflows/terraform-module-review.yml@main
+    with:
+      runs-on: self-hosted

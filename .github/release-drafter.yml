@@ -1,0 +1,51 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+exclude-labels:
+  - 'skip-changelog'
+exclude-contributors:
+  - 'pp-ci'
+autolabeler:
+  - label: 'category:feature'
+    branch:
+      - '/feature\/.+/'
+  - label: 'category:enhancement'
+    branch:
+      - '/enhancement\/.+/'
+  - label: 'category:bug'
+    branch:
+      - '/bug\/.+/'
+      - '/bugfix\/.+/'
+  - label: 'category:documentation'
+    branch:
+      - '/documentation\/.+/'
+      - '/docs\/.+/'
+  - label: 'category:chore'
+    branch:
+      - '/chore\/.+/'
+categories:
+  - title: '🚀 Features'
+    label: 'category:feature'
+  - title: '✨ Enhancement'
+    label: 'category:enhancement'
+  - title: '🪲 Bug Fixes'
+    label: 'category:bug'
+  - title: '📖 Documentation'
+    label: 'category:documentation'
+  - title: '🧰 Maintenance'
+    label: 'category:chore'
+change-template: '- $TITLE #$NUMBER (@$AUTHOR)'
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+version-resolver:
+  major:
+    labels:
+      - 'version:major'
+  minor:
+    labels:
+      - 'version:minor'
+  patch:
+    labels:
+      - 'version:patch'
+  default: patch
+template: |
+  ## 🎉 What's Changed?
+  $CHANGES
